@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { CalculatorIcon, HomeIcon } from "@heroicons/react/16/solid";
+import { CalculatorIcon, HomeIcon, PuzzlePieceIcon } from "@heroicons/react/16/solid";
 import SidebarLink from "./SidebarLink";
 ("@heroicons/react");
 
@@ -17,13 +17,19 @@ const NavLinks = [
     path: "/dashboard/counter",
     icon: <CalculatorIcon className="size-6 text-white" />,
   },
+  {
+    title: "Pokémon",
+    subtitle: "Generación estática",
+    path: "/dashboard/pokemons",
+    icon: <PuzzlePieceIcon className="size-6 text-white" />,
+  },
 ];
 
 export const Sidebar = () => {
   return (
     <div
       id="menu"
-      className="bg-gray-900 min-h-screen z-10 text-slate-300 left-0 h-screen overflow-y-scroll w-80"
+      className="bg-gray-900 min-h-screen z-10 text-slate-300 left-0 overflow-y-scroll w-80"
     >
       <div id="logo" className="my-4 px-6">
         <h1 className="text-lg md:text-2xl font-bold text-white">

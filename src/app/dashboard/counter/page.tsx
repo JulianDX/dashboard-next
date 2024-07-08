@@ -1,4 +1,5 @@
-import ShoppinCart from "@/app/shopping-cart/components/shopping-cart/ShoppinCart";
+import ShoppinCart from "@/shopping-cart/components/shopping-cart/ShoppinCart";
+
 
 export const metadata = {
   title: "Un Ejemplo",
