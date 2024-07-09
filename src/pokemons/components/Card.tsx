@@ -1,15 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import { SinglePokemon } from "../interfaces/SinglePokemon";
 import { HeartIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { toggleFavorite } from "@/store/pokemon/characterSlice";
 
 interface PokeCardProps {
   pokemon: SinglePokemon;
 }
 
 export const PokeCard = ({ pokemon }: PokeCardProps) => {
+  const dispatch = useAppDispatch();
+  const pokemons = useAppSelector((store) => store.pokemons.pokemons);
+
+  const found = pokemons.find((poke) => poke.id === pokemon.id);
+
+  const handleClick = (character: SinglePokemon) => {
+    dispatch(toggleFavorite(character));
+  };
+
   return (
-    <div className="w-60">
+    <div onClick={() => handleClick(pokemon)} className="w-60 cursor-pointer">
       <div className="bg-slate-800 h-72 py-10 flex flex-col items-center justify-center">
         <Image
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
@@ -29,12 +42,16 @@ export const PokeCard = ({ pokemon }: PokeCardProps) => {
         </Link>
       </div>
       <div className="flex gap-3 p-2 items-center shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]">
-        <button>
-          <HeartIcon className="size-6 ml-2 text-gray-400" />
+        <button className="ml-2">
+          <HeartIcon
+            className={`size-6 ${found ? "text-red-500" : "text-gray-400"}`}
+          />
         </button>
         <div>
-          <p className="font-semibold">No es favorito</p>
-          <p className="-mt-1 text-sm text-slate-500">View your campaigns</p>
+          <p className="font-semibold">
+            {found ? "Es favorito" : "No es favorito"}
+          </p>
+          <p className="-mt-1 text-sm text-slate-500">Click para cambiar</p>
         </div>
       </div>
     </div>

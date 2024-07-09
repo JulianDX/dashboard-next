@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { CalculatorIcon, HomeIcon, PuzzlePieceIcon } from "@heroicons/react/16/solid";
+import { CalculatorIcon, HeartIcon, HomeIcon, PuzzlePieceIcon } from "@heroicons/react/16/solid";
 import SidebarLink from "./SidebarLink";
 ("@heroicons/react");
 
@@ -22,6 +22,12 @@ const NavLinks = [
     subtitle: "Generación estática",
     path: "/dashboard/pokemons",
     icon: <PuzzlePieceIcon className="size-6 text-white" />,
+  },
+  {
+    title: "Favoritos",
+    subtitle: "Global State",
+    path: "/dashboard/favorites",
+    icon: <HeartIcon className="size-6 text-white" />,
   },
 ];
 
